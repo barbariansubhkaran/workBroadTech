@@ -1,0 +1,22 @@
+FoamFile
+{
+	version	2.0;
+	format	ascii;
+	class	dictionary;
+	location	"system/solid";
+	object	fvOptions;
+}
+scalarSource
+{
+	active	true;
+	type	scalarSemiImplicitSource;
+	scalarSemiImplicitSourceCoeffs
+	{
+		volumeMode	absolute;
+		selectionMode	all;
+		injectionRateSuSp
+		{
+			h	(450 0);
+		}
+	}
+}

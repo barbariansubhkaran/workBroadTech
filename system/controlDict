@@ -1,0 +1,54 @@
+FoamFile
+{
+	class	dictionary;
+	format	ascii;
+	location	system;
+	object	controlDict;
+	version	2.0;
+}
+adjustTimeStep	true;
+application	chtMultiRegionFoam;
+deltaT	0.2;
+endTime	100;
+maxCo	2.0;
+maxDeltaT	0.2;
+purgeWrite	0;
+startFrom	latestTime;
+startTime	0;
+stopAt	endTime;
+timeFormat	general;
+timePrecision	6;
+writeControl	adjustableRunTime;
+writeInterval	5;
+writePrecision	7;
+runTimeModifiable	true;
+timeFormat	general;
+timePrecision	6;
+writeCompression	false;
+writeFormat	binary;
+writePrecision	7;
+libs	("libfvMotionSolvers.so" "libturbulenceModels.so" "libturbulenceModelSchemes.so");
+functions
+{
+	writeExtraFieldsInFluid
+	{
+		libs	("libutilityFunctionObjects.so");
+		objects	(rho K);
+		type	writeObjects;
+		writeOption	anyWrite;
+		executeInterval	1;
+		enabled	true;
+		log	true;
+		writeControl	writeTime;
+		writeInterval	1;
+		region	fluid;
+	}
+}
+OptimisationSwitches
+{
+	fileHandler	uncollated;
+	fileModificationSkew	0;
+	maxMasterFileBufferSize	1.0E9;
+	maxThreadFileBufferSize	1.0E9;
+	mpiBufferSize	200000000;
+}

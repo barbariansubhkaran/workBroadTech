@@ -1,0 +1,30 @@
+FoamFile
+{
+	version	2.0;
+	format	binary;
+	class	volScalarField;
+	location	"0/solid";
+	object	T;
+	arch	"LSB;label=32;scalar=64";
+}
+dimensions	[0 0 0 1 0 0 0];
+internalField	uniform 300;
+boundaryField
+{
+	solid_defaultFaces
+	{
+		type	zeroGradient;
+	}
+	solid_to_fluid
+	{
+		type	compressible::turbulentTemperatureRadCoupledMixed;
+		value	uniform 300;
+		qrNbr	none;
+		qr	none;
+		neighbourFieldName	T;
+		alphaAni	Anialpha;
+		kappaMethod	solidThermo;
+		kappa	none;
+		Tnbr	T;
+	}
+}

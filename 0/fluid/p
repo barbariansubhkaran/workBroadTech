@@ -1,0 +1,24 @@
+FoamFile
+{
+	version	2.0;
+	format	binary;
+	class	volScalarField;
+	location	"0/fluid";
+	object	p;
+	arch	"LSB;label=32;scalar=64";
+}
+dimensions	[1 -1 -2 0 0 0 0];
+internalField	uniform 100000;
+boundaryField
+{
+	fluid_defaultFaces
+	{
+		type	calculated;
+		value	uniform 100000;
+	}
+	fluid_to_solid
+	{
+		type	calculated;
+		value	uniform 100000;
+	}
+}
